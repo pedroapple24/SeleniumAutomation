@@ -17,9 +17,6 @@ public class SeleniumWebDriver {
         Thread.sleep(5000);  // Let the user actually see something!
         driver.quit();
     }
-
-
-
 }
 
 
