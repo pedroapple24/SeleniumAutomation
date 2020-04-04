@@ -2,6 +2,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
 import org.junit.Test;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -162,7 +164,89 @@ public class SeleniumWebDriver {
         Select fruits = new Select(driver.findElement(By.id("fruits")));
         fruits.selectByVisibleText("Banana");
         fruits.selectByIndex(1);
-
     }
+    @Test
+    public void byList(){
+        String baseUrl = "http://demo.guru99.com/test/link.html";
+        System.setProperty("webdriver.gecko.driver","/Users/pedro/Documents/sw_test/geckodriver");
+        WebDriver driver = new ChromeDriver();
+        driver.get(baseUrl);
+        driver.findElement(By.linkText("click here")).click();
+        System.out.println("title of page is: " + driver.getTitle());
+        driver.quit();
+    }
+
+    @Test
+    public void mouseClick(){
+        String baseUrl = "http://demo.guru99.com/test/newtours/";
+        System.setProperty("webdriver.gecko.driver","/Users/pedro/Documents/sw_test/geckodriver");
+        WebDriver driver = new FirefoxDriver();
+
+        driver.get(baseUrl);
+        WebElement link_Home = driver.findElement(By.linkText("Home"));
+        WebElement td_Home = driver
+                .findElement(By
+                        .xpath("//html/body/div"
+                                + "/table/tbody/tr/td"
+                                + "/table/tbody/tr/td"
+                                + "/table/tbody/tr/td"
+                                + "/table/tbody/tr"));
+
+        Actions builder = new Actions(driver);
+        Action mouseOverHome = builder
+                .moveToElement(link_Home)
+                .build();
+
+        String bgColor = td_Home.getCssValue("background-color");
+        System.out.println("Before hover: " + bgColor);
+        mouseOverHome.perform();
+        bgColor = td_Home.getCssValue("background-color");
+        System.out.println("After hover: " + bgColor);
+        driver.close();
+    }
+
+    @Test
+    public void clickTest(){
+        System.setProperty("webdriver.gecko.driver","/Users/pedro/Documents/sw_test/geckodriver");
+
+        String baseUrl = "http://www.facebook.com/";
+        WebDriver driver = new FirefoxDriver();
+
+        driver.get(baseUrl);
+        WebElement txtUsername = driver.findElement(By.id("email"));
+
+        Actions builder = new Actions(driver);
+        Action seriesOfActions = builder
+                .moveToElement(txtUsername)
+                .click()
+                .keyDown(txtUsername, Keys.SHIFT)
+                .sendKeys(txtUsername, "hello")
+                .keyUp(txtUsername, Keys.SHIFT)
+                .doubleClick(txtUsername)
+                .contextClick()
+                .build();
+
+        seriesOfActions.perform() ;
+    }
+
+    @Test
+    public void upload(){
+        System.setProperty("webdriver.gecko.driver","/Users/pedro/Documents/sw_test/geckodriver");
+        String baseUrl = "http://demo.guru99.com/test/upload/";
+        WebDriver driver = new FirefoxDriver();
+
+        driver.get(baseUrl);
+        WebElement uploadElement = driver.findElement(By.id("uploadfile_0"));
+
+        // enter the file path onto the file-selection input field
+        uploadElement.sendKeys("/Users/pedro/Documents/sw/sample.txt");
+
+        // check the "I accept the terms of service" check box
+        driver.findElement(By.id("terms")).click();
+
+        // click the "UploadFile" button
+        driver.findElement(By.name("send")).click();
+    }
+
 }
 
