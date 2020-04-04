@@ -52,7 +52,7 @@ public class JUnit {
         System.out.println("Using @Test(timeout),it can be used to enforce timeout in JUnit4 test case");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test (expected = NoSuchMethodException.class)
     public void m8() {
         System.out.println("Using @Test(expected) ,it will check for specified exception during its execution");
     }
