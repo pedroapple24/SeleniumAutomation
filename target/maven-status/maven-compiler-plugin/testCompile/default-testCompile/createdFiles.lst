@@ -2,3 +2,4 @@ JUnit.class
 SeleniumWebDriver.class
 FirstTestNG.class
 SampleTestNG.class
+TestNGByFile.class
