@@ -421,7 +421,6 @@ public class SeleniumWebDriver {
                     e.printStackTrace();
                 }
             }
-
             driver.quit();
     }
 }
