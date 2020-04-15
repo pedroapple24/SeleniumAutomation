@@ -324,15 +324,6 @@ public class SeleniumWebDriver {
     }
 
     @Test
-    public void standAloneTest(){
-        System.setProperty("webdriver.gecko.driver","/Users/pedro/Documents/sw_test/geckodriver");
-        WebDriver driver=new FirefoxDriver();
-        driver.get("http://demo.guru99.com/articles_popup.php");
-
-
-    }
-
-    @Test
     public void webHandle(){
 
         System.setProperty("webdriver.gecko.driver","/Users/pedro/Documents/sw_test/geckodriver");
