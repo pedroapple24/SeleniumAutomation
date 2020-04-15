@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Java.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Java.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Java.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Java.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/SeleniumAutomation.iml" filepath="$PROJECT_DIR$/.idea/SeleniumAutomation.iml" />
     </modules>
   </component>
 </project>

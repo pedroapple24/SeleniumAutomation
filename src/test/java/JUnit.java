@@ -1,13 +1,10 @@
-import static org.junit.Assert.*;
+import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class JUnit {
 
@@ -40,6 +37,56 @@ public class JUnit {
         list.add("test");
         assertFalse(list.isEmpty());
         assertEquals(1, list.size());
+
+        ArrayList<String> cars = new ArrayList<String>();
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("Mazda");
+        System.out.println(cars);
+
+        int array[] = new int[7];
+        for (int count = 0; count < 7; count++) {
+            array[count] = count + 1;
+        }
+        for (int count = 0; count < 7; count++) {
+            System.out.println("array[" + count + "] = " + array[count]);
+        }
+
+        Level myVar = Level.HIGH;
+        System.out.println(myVar);
+
+        HashMap<String, String> capitalCities = new HashMap<String, String>();
+        // Add keys and values (Country, City)
+        capitalCities.put("England", "London");
+        capitalCities.put("Germany", "Berlin");
+        capitalCities.put("Norway", "Oslo");
+        capitalCities.put("USA", "Washington DC");
+        System.out.println(capitalCities);
+        capitalCities.get("England");
+        capitalCities.remove("England");
+
+        for (String i : capitalCities.keySet()) {
+            System.out.println(i);
+        }
+
+        for (String i : capitalCities.values()) {
+            System.out.println(i);
+        }
+
+        for (String i : capitalCities.keySet()) {
+            System.out.println("key: " + i + " value: " + capitalCities.get(i));
+        }
+
+        capitalCities.clear();
+        capitalCities.size();
+
+    }
+    
+    enum Level {
+        LOW,
+        MEDIUM,
+        HIGH
     }
 
     @Ignore
@@ -52,12 +99,9 @@ public class JUnit {
         System.out.println("Using @Test(timeout),it can be used to enforce timeout in JUnit4 test case");
     }
 
-    /*
+
     @Test (expected = NoSuchMethodException.class)
     public void m8() {
         System.out.println("Using @Test(expected) ,it will check for specified exception during its execution");
     }
-    */
-
-
 }
