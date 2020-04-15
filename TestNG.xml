@@ -3,7 +3,7 @@
 <suite name="SeleniumAutomation" thread-count="3" parallel="methods" >
     <test name="Pedro">
         <classes>
-            <class name="TestNGByFile">
+            <class name="TestNG.TestNGByFile">
             </class>
         </classes>
     </test>

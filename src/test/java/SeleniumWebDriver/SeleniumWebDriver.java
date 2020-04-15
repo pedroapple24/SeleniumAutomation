@@ -1,6 +1,8 @@
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.*;
+package SeleniumWebDriver;
+
 import org.junit.Test;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -40,6 +42,7 @@ public class SeleniumWebDriver {
         driver.get("http://demo.guru99.com/test/ajax.html");
         driver.findElement(By.id("no")).click();
         driver.findElement(By.id("buttoncheck")).click();
+        driver.quit();
     }
 
     @Test
@@ -54,6 +57,7 @@ public class SeleniumWebDriver {
         for (int i=0; i<elements.size();i++){
             System.out.println("Radio button text:" + elements.get(i).getAttribute("value"));
         }
+        driver.quit();
     }
 
     @Test
@@ -87,7 +91,7 @@ public class SeleniumWebDriver {
         driver.findElement(By.name("passwd")).sendKeys("abcdefghlkjl");
         driver.findElement(By.id("SubmitLogin")).submit();
         System.out.println("Login Done with Submit");
-        //driver.close();
+        driver.quit();
     }
 
     @Test
@@ -129,7 +133,7 @@ public class SeleniumWebDriver {
             chkFBPersist.click ();
             System.out.println("Facebook Persists Checkbox Status is -  "+chkFBPersist.isSelected());
         }
-        //driver.close();
+        driver.quit();
     }
 
     @Test
@@ -152,7 +156,7 @@ public class SeleniumWebDriver {
         } else {
             System.out.println("We are NOT in Facebook's homepage");
         }
-        driver.close();
+        driver.quit();
     }
 
     @Test
@@ -171,6 +175,7 @@ public class SeleniumWebDriver {
         Select fruits = new Select(driver.findElement(By.id("fruits")));
         fruits.selectByVisibleText("Banana");
         fruits.selectByIndex(1);
+        driver.quit();
     }
     @Test
     public void byList(){
@@ -209,7 +214,7 @@ public class SeleniumWebDriver {
         mouseOverHome.perform();
         bgColor = td_Home.getCssValue("background-color");
         System.out.println("After hover: " + bgColor);
-        driver.close();
+        driver.quit();
     }
 
     @Test
@@ -234,6 +239,7 @@ public class SeleniumWebDriver {
                 .build();
 
         seriesOfActions.perform() ;
+        driver.quit();
     }
 
     @Test
@@ -253,6 +259,7 @@ public class SeleniumWebDriver {
 
         // click the "UploadFile" button
         driver.findElement(By.name("send")).click();
+        driver.quit();
     }
 
     @Test
@@ -279,10 +286,11 @@ public class SeleniumWebDriver {
 
         // Accepting alert
         alert.accept();
+        driver.quit();
     }
 
     @Test
-    public void windowHandle(){
+    public void windowHandle() {
 
         System.setProperty("webdriver.gecko.driver","/Users/pedro/Documents/sw_test/geckodriver");
         WebDriver driver=new FirefoxDriver();
@@ -290,35 +298,38 @@ public class SeleniumWebDriver {
         //Launching the site.
         driver.get("http://demo.guru99.com/popup.php");
         driver.manage().window().maximize();
-
         driver.findElement(By.xpath("//*[contains(@href,'popup.php')]")).click();
-
         String MainWindow=driver.getWindowHandle();
 
         // To handle all new opened window.
         Set<String> s1=driver.getWindowHandles();
         Iterator<String> i1=s1.iterator();
 
-        while(i1.hasNext())
-        {
+        while(i1.hasNext()) {
             String ChildWindow=i1.next();
-
-            if(!MainWindow.equalsIgnoreCase(ChildWindow))
-            {
-
+            if(!MainWindow.equalsIgnoreCase(ChildWindow)) {
                 // Switching to Child window
-                driver.switchTo().window(ChildWindow);
-                driver.findElement(By.name("emailid"))
-                        .sendKeys("gaurav.3n@gmail.com ");
-
-                                driver.findElement(By.name("btnLogin")).click();
-
+                driver.switchTo().window(ChildWindow).manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+                String url = driver.getCurrentUrl();
+                System.out.println(url);
+                driver.findElement(By.name("emailid")).sendKeys("gaurav.3n@gmail.com ");
+                driver.findElement(By.name("btnLogin")).click();
                 // Closing the Child Window.
                 driver.close();
             }
         }
         // Switching to Parent window i.e Main Window.
         driver.switchTo().window(MainWindow);
+        driver.quit();
+    }
+
+    @Test
+    public void standAloneTest(){
+        System.setProperty("webdriver.gecko.driver","/Users/pedro/Documents/sw_test/geckodriver");
+        WebDriver driver=new FirefoxDriver();
+        driver.get("http://demo.guru99.com/articles_popup.php");
+
+
     }
 
     @Test
@@ -353,7 +364,7 @@ public class SeleniumWebDriver {
         WebElement cellIneed = tableRow.findElement(By.xpath("//*[@id=\"leftcontainer\"]/table/tbody/tr[3]/td[2]"));
         String valueIneed = cellIneed.getText();
         System.out.println("Cell value is : " + valueIneed);
-        wd.close();
+        wd.quit();
     }
 
     @Test
