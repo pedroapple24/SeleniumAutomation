@@ -22,5 +22,6 @@ public class SampleTestNG {
         String actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
         driver.close();
+        driver.quit();
     }
 }

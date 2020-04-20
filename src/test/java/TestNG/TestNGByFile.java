@@ -16,6 +16,7 @@ public class TestNGByFile {
         driver.get("http://demo.guru99.com/V4/");
         //find user name text box and fill it
         driver.findElement(By.name("uid")).sendKeys("Driver 1");
+        driver.quit();
 
     }
 
@@ -28,6 +29,7 @@ public class TestNGByFile {
         driver.get("http://demo.guru99.com/V4/");
         //find user name text box and fill it
         driver.findElement(By.name("uid")).sendKeys("Driver 2");
+        driver.quit();
 
     }
 
@@ -40,6 +42,7 @@ public class TestNGByFile {
         driver.get("http://demo.guru99.com/V4/");
         //find user name text box and fill it
         driver.findElement(By.name("uid")).sendKeys("Driver 3");
+        driver.quit();
 
     }
 
