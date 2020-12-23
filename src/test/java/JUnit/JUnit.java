@@ -101,8 +101,11 @@ public class JUnit {
     }
 
 
+    /*
     @Test (expected = NoSuchMethodException.class)
     public void m8() {
         System.out.println("Using @Test(expected) ,it will check for specified exception during its execution");
     }
+    */
+
 }

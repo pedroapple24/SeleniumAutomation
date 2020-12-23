@@ -17,7 +17,6 @@ public class TestNGByFile {
         //find user name text box and fill it
         driver.findElement(By.name("uid")).sendKeys("Driver 1");
         driver.quit();
-
     }
 
     @Test
