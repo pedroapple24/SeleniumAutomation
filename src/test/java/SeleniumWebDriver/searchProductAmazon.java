@@ -33,8 +33,8 @@ public class searchProductAmazon {
 
         Thread.sleep(4000);
 
-        WebElement addCart = driver.findElement(By.id("id=\"add-to-cart-button\""));
-        addCart.click();
+        //WebElement addCart = driver.findElement(By.id("id=\"add-to-cart-button\""));
+        //addCart.click();
 
         //agrrgar al carrito pending
 
